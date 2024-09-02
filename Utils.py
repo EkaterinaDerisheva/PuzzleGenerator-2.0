@@ -2,7 +2,7 @@ import chess
 
 
 def getMovesToTarget(board, start, target):
-    start_squares = []
+    start_squares = [chess.parse_square(start)]
     new_board = board.copy()
     for square in range(64):
         if square != chess.parse_square(target) and square != chess.parse_square(start) and new_board.piece_at(square) is None:
