@@ -18,9 +18,8 @@ def getPossiblePieces(board, square):
     piece = board.piece_at(square)
     copy_board = board.copy()
     possiblePieces = [piece]
-    piece.lower()
-    if piece == 'b' or piece == 'r':
-        newPiece = 'q' if board.color_at(square) == chess.BLACK else 'Q'
+    if piece.symbol().lower() == 'b' or piece.symbol().lower() == 'r':
+        newPiece = chess.Piece(5, chess.BLACK) if board.color_at(square) == chess.BLACK else chess.Piece(5, chess.WHITE)
         copy_board.set_piece_at(square, newPiece)
         if board.is_check() and copy_board.is_check() or not board.is_check() and not copy_board.is_check():
             possiblePieces.append(newPiece)
