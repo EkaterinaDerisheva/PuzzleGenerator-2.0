@@ -1,4 +1,3 @@
-import random as rd
 
 import chess
 import pandas as pd
@@ -84,9 +83,6 @@ def generate(puzzleOrig):
                     if board2.is_variant_end():
                         humanPoses2.remove(humanPose2)
                         continue
-                    # if board2.is_check():
-                    #     humanPoses2.remove(humanPose2)
-                    #     continue
                     if not board2.is_legal(chess.Move.from_uci(moveSet[2])):
                         humanPoses2.remove(humanPose2)
                         continue
@@ -123,15 +119,11 @@ def generate(puzzleOrig):
                 print(newPuzzle)
     return df
 
-
 def main():
-    # df_MateIn2_Generated = pd.DataFrame(columns=['PuzzleId', 'FEN', 'Moves', 'Level'])
-    # df_MateIn2_Generated = pd.read_csv('mateIn2Generated')
-    df_MateIn2_Generated = pd.DataFrame()
-    for i in range(100):
-        puzzle_manager = PuzzleManager.Puzzle(4)
-        puzzle = puzzle_manager.parse()
-        df_MateIn2_Generated = pd.concat([df_MateIn2_Generated, generate(puzzle)], ignore_index=True)
+    index = input("Enter puzzle Id:\t")
+    puzzle_manager = PuzzleManager.Puzzle(index)
+    puzzle = puzzle_manager.parse()
+    df_MateIn2_Generated = generate(puzzle)
     df_MateIn2_Generated.to_csv('mateIn2Generated', mode='a')
 
 
