@@ -12,7 +12,7 @@ def generate(puzzleOrig):
     origId = puzzleOrig[0]
     origFen = puzzleOrig[1]
     origMoveSet = puzzleOrig[2].split()
-    origLevel = puzzleOrig[3]
+    origLevel = puzzleOrig[10]
     origBoard = chess.Board(origFen)
     indexPos1 = 0
 
