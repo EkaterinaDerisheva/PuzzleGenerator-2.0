@@ -7,8 +7,8 @@ import PuzzleManager
 
 
 def generate(puzzleOrig):
-    # df = pd.DataFrame(columns=['PuzzleId', 'FEN', 'Moves', 'Level'])
-    df = pd.DataFrame()
+    df = pd.DataFrame(columns=['ID', 'FEN', 'MoveSet', 'Level'])
+    # df = pd.DataFrame()
     origId = puzzleOrig[0]
     origFen = puzzleOrig[1]
     origMoveSet = puzzleOrig[2].split()
@@ -109,14 +109,15 @@ def generate(puzzleOrig):
                     newMoveSet = " ".join(moveSet)
                     puzzleID = str(origId) + '_' + str(indexPos1) + '_' + str(indexPiece1) + '_' + str(indexPos2)
                     newPuzzle = [puzzleID, board.fen(), newMoveSet, origLevel]
-                    df = pd.concat([df, pd.DataFrame([newPuzzle])], ignore_index=True)
+                    df = pd.concat([df, pd.DataFrame([newPuzzle], columns=['ID', 'FEN', 'MoveSet', 'Level'])])
                     print(newPuzzle)
             else:
                 newMoveSet = " ".join(moveSet)
                 puzzleID = str(origId) + '_' + str(indexPos1) + '_' + str(indexPiece1) + '_' + str(indexPos2)
                 newPuzzle = [puzzleID, board.fen(), newMoveSet, origLevel]
-                df = pd.concat([df, pd.DataFrame([newPuzzle])], ignore_index=True)
+                df = pd.concat([df, pd.DataFrame([newPuzzle], columns=['ID', 'FEN', 'MoveSet', 'Level'])])
                 print(newPuzzle)
+    df.rename(columns={'0': 'ID', '1': 'Fen', '2': 'MoveSet', '3': 'Level'}, inplace=True)
     return df
 
 def main():
