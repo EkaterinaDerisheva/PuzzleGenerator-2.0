@@ -12,9 +12,9 @@ def generate_puzzles():
 
     puzzle_manager = PuzzleManager.Puzzle(id)
     puzzle = puzzle_manager.parse()
-    df_MateIn2_Generated = generate(puzzle)
-    print(df_MateIn2_Generated.info())
-    return Response(df_MateIn2_Generated.to_json(orient="records"), mimetype='application/json')
+    df_generated = generate(puzzle)
+    print(df_generated.info())
+    return Response(df_generated.to_json(orient="records"), mimetype='application/json')
 
 
 if __name__ == '__main__':
