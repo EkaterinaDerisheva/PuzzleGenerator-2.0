@@ -89,9 +89,6 @@ def generateMateIn2(puzzleOrig):
                     if board2.is_variant_end():
                         humanPoses2.remove(humanPose2)
                         continue
-                    if board2.is_check():
-                        humanPoses2.remove(humanPose2)
-                        continue
                     if not board2.is_legal(chess.Move.from_uci(chess.square_name(humanPose2) + moveSet[3][2:4])):
                         humanPoses2.remove(humanPose2)
                         continue
@@ -205,9 +202,6 @@ def generateMateIn3(puzzleOrig):
                     if board2.is_variant_end():
                         humanPoses2.remove(humanPose2)
                         continue
-                    if board2.is_check():
-                        humanPoses2.remove(humanPose2)
-                        continue
                     if not board2.is_legal(chess.Move.from_uci(chess.square_name(humanPose2) + moveSet[3][2:4])):
                         humanPoses2.remove(humanPose2)
                         continue
@@ -263,9 +257,6 @@ def generateMateIn3(puzzleOrig):
                                 continue
                             board3.push(chess.Move.from_uci(moveSet[2]))
                             if board3.is_variant_end():
-                                humanPoses3.remove(humanPose3)
-                                continue
-                            if board3.is_check():
                                 humanPoses3.remove(humanPose3)
                                 continue
                             if not board3.is_legal(chess.Move.from_uci(moveSet[3])):
@@ -337,8 +328,7 @@ def main():
     puzzle_manager = PuzzleManager.Puzzle(index)
     puzzle = puzzle_manager.parse()
     df_generated = generate(puzzle)
-    print(df_generated)
-    # df_generated.to_csv('Generated', mode='a')
+    df_generated.to_csv('Generated', mode='a')
 
 
 if __name__ == "__main__":
